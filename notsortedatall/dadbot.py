@@ -1,10 +1,11 @@
 from discord.ext import commands
+import os
 
 prefix = "."
 client = commands.Bot(command_prefix=prefix)
 client.remove_command("help")
 
-botToken = "NzczMDc3NTM0NzY5Njc2Mjkw.X6D-jw.muFqgRN1PQBiDKPGCsNUXsp_ai4"
+botToken = os.environ["discord_dadbot_token"]
 
 
 @client.event
