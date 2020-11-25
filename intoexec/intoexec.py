@@ -1,6 +1,7 @@
 import re
+encoding="utf-8"  # Change this if you're using it with a different encoding
 filename = input("File: ")
-with open(f"./{filename}", "r") as fp:
+with open(f"./{filename}", "r", encoding=encoding) as fp:
 	file = fp.read()
 	newfile = ""
 	replace = False
@@ -28,7 +29,7 @@ with open(f"./{filename}", "r") as fp:
 		replace = False
 		lastchar = char
 
-	with open(f"./{filename}-exec.py", "w") as fp2:
+	with open(f"./{filename}-exec.py", "w", encoding=encoding) as fp2:
 		fp2.write(f"exec(\"{newfile}\", globals())")
 
 	print("Turned file into exec")
