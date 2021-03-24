@@ -5,7 +5,6 @@ with open(f"./{filename}", "r", encoding=encoding) as fp:
 	file = fp.read()
 	newfile = ""
 	replace = False
-	lastchar = ""
 	for char in file:
 		if char == "\t":
 			newfile += "\\t"
@@ -27,9 +26,8 @@ with open(f"./{filename}", "r", encoding=encoding) as fp:
 			newfile += char
 
 		replace = False
-		lastchar = char
 
 	with open(f"./{filename}-exec.py", "w", encoding=encoding) as fp2:
-		fp2.write(f"exec(\"{newfile}\", globals())")
+		fp2.write(f"exec(\"{newfile}\", dict(globals(), **locals()))")
 
 	print("Turned file into exec")
